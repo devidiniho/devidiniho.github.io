@@ -528,129 +528,428 @@ deleteProjectButton.addEventListener("click", () => {
 });
 
 
-const fallbackQuotes = [
+const motivationalQuotes = [
   {
-    quote: "The important thing is not to stop questioning.",
-    author: "Albert Einstein"
+    quote: "Build the simplest version that can teach you something.",
+    author: "AETHER"
   },
   {
-    quote: "What we know is a drop; what we do not know is an ocean.",
-    author: "Isaac Newton"
+    quote: "A difficult problem becomes smaller when you define it precisely.",
+    author: "AETHER"
   },
   {
-    quote: "Nothing is too wonderful to be true, if it is consistent with the laws of nature.",
-    author: "Michael Faraday"
-  }
-  {
-  text: "Study hard what interests you the most in the most undisciplined, irreverent and original manner possible.",
-  author: "Richard Feynman"
+    quote: "Progress is usually a sequence of corrected assumptions.",
+    author: "AETHER"
   },
   {
-    text: "The scientist is not a person who gives the right answers; he's one who asks the right questions.",
-    author: "Claude Lévi-Strauss"
+    quote: "Design first for clarity, then for performance.",
+    author: "AETHER"
   },
   {
-    text: "The first principle is that you must not fool yourself—and you are the easiest person to fool.",
-    author: "Richard Feynman"
+    quote: "A failed model is still useful if it reveals the wrong assumption.",
+    author: "AETHER"
   },
   {
-    text: "Everything should be made as simple as possible, but not simpler.",
-    author: "Albert Einstein"
+    quote: "The best engineering questions are specific enough to test.",
+    author: "AETHER"
   },
   {
-    text: "If I have seen further it is by standing on the shoulders of giants.",
-    author: "Isaac Newton"
+    quote: "Work until the mechanism is understood, not merely reproduced.",
+    author: "AETHER"
   },
   {
-    text: "Research is what I'm doing when I don't know what I'm doing.",
-    author: "Wernher von Braun"
+    quote: "Complex systems are solved one interface at a time.",
+    author: "AETHER"
   },
   {
-    text: "Science is a way of thinking much more than it is a body of knowledge.",
-    author: "Carl Sagan"
+    quote: "A good diagram can remove an hour of confusion.",
+    author: "AETHER"
   },
   {
-    text: "Somewhere, something incredible is waiting to be known.",
-    author: "Carl Sagan"
+    quote: "Precision begins with naming things correctly.",
+    author: "AETHER"
   },
   {
-    text: "The great tragedy of science—the slaying of a beautiful hypothesis by an ugly fact.",
-    author: "Thomas Huxley"
+    quote: "Every simulation is an argument built from assumptions.",
+    author: "AETHER"
   },
   {
-    text: "Nature uses only the longest threads to weave her patterns.",
-    author: "Richard Feynman"
+    quote: "Reliable results require both calculation and scepticism.",
+    author: "AETHER"
   },
   {
-    text: "Every once in a while, a new technology, an old problem, and a big idea turn into an innovation.",
-    author: "Dean Kamen"
+    quote: "The fastest route forward is often a better abstraction.",
+    author: "AETHER"
   },
   {
-    text: "Scientists investigate that which already is; engineers create that which has never been.",
-    author: "Theodore von Kármán"
+    quote: "Measure twice, model once, validate always.",
+    author: "AETHER"
   },
   {
-    text: "Engineering is the art of directing the great sources of power in nature for the use and convenience of mankind.",
-    author: "Thomas Tredgold"
+    quote: "A clean equation is not automatically a correct model.",
+    author: "AETHER"
   },
   {
-    text: "The engineer has been, and is, a maker of history.",
-    author: "James Kip Finch"
+    quote: "Understanding grows when you compare methods, not just answers.",
+    author: "AETHER"
   },
   {
-    text: "No problem can withstand the assault of sustained thinking.",
-    author: "Voltaire"
+    quote: "The quality of a result depends on the quality of the question.",
+    author: "AETHER"
   },
   {
-    text: "We are still pioneers.",
-    author: "James Webb"
+    quote: "Build tools that make difficult thinking easier.",
+    author: "AETHER"
   },
   {
-    text: "Failure is simply the opportunity to begin again, this time more intelligently.",
-    author: "Henry Ford"
+    quote: "An engineer improves reality by first representing it honestly.",
+    author: "AETHER"
   },
   {
-    text: "Vision without execution is hallucination.",
-    author: "Thomas Edison"
+    quote: "Small improvements compound into technical mastery.",
+    author: "AETHER"
   },
   {
-    text: "The best way to predict the future is to invent it.",
-    author: "Alan Kay"
+    quote: "When the result is surprising, inspect the assumptions before celebrating.",
+    author: "AETHER"
   },
   {
-    text: "The limits of my language mean the limits of my world.",
-    author: "Ludwig Wittgenstein"
+    quote: "Good code makes the mathematics visible.",
+    author: "AETHER"
   },
   {
-    text: "The important thing is not to stop questioning.",
-    author: "Albert Einstein"
+    quote: "A model should be as detailed as necessary and no more.",
+    author: "AETHER"
   },
   {
-    text: "What we know is a drop; what we do not know is an ocean.",
-    author: "Isaac Newton"
+    quote: "The first prototype answers questions the plan cannot.",
+    author: "AETHER"
   },
   {
-    text: "Nothing is too wonderful to be true, if it is consistent with the laws of nature.",
-    author: "Michael Faraday"
+    quote: "Difficulty is often a signal that the problem needs decomposition.",
+    author: "AETHER"
   },
   {
-    text: "An experiment is a question which science poses to nature.",
-    author: "Max Planck"
+    quote: "A strong solution explains why alternatives were rejected.",
+    author: "AETHER"
   },
   {
-    text: "The present is theirs; the future, for which I really worked, is mine.",
-    author: "Nikola Tesla"
+    quote: "Accuracy without interpretation is incomplete.",
+    author: "AETHER"
+  },
+  {
+    quote: "Every constraint can become a design decision.",
+    author: "AETHER"
+  },
+  {
+    quote: "The best projects produce both an artefact and a better thinker.",
+    author: "AETHER"
+  },
+  {
+    quote: "What you cannot explain clearly, you do not yet control.",
+    author: "AETHER"
+  },
+  {
+    quote: "Numerical stability is part of correctness.",
+    author: "AETHER"
+  },
+  {
+    quote: "A result is trustworthy only when you know how it could fail.",
+    author: "AETHER"
+  },
+  {
+    quote: "Research starts where confident answers end.",
+    author: "AETHER"
+  },
+  {
+    quote: "The purpose of mathematics is not decoration but structure.",
+    author: "AETHER"
+  },
+  {
+    quote: "Good engineering balances performance, cost, safety and simplicity.",
+    author: "AETHER"
+  },
+  {
+    quote: "Do not optimise a process you have not understood.",
+    author: "AETHER"
+  },
+  {
+    quote: "A careful approximation is better than false precision.",
+    author: "AETHER"
+  },
+  {
+    quote: "The most valuable question is often: what changes the result most?",
+    author: "AETHER"
+  },
+  {
+    quote: "Test the boundary cases; they expose weak reasoning.",
+    author: "AETHER"
+  },
+  {
+    quote: "A robust system behaves sensibly even when inputs do not.",
+    author: "AETHER"
+  },
+  {
+    quote: "The model is not reality, but it should respect reality.",
+    author: "AETHER"
+  },
+  {
+    quote: "Iteration is not repetition when each cycle uses evidence.",
+    author: "AETHER"
+  },
+  {
+    quote: "Technical confidence should grow from verification, not familiarity.",
+    author: "AETHER"
+  },
+  {
+    quote: "A concise solution is usually the result of deep work.",
+    author: "AETHER"
+  },
+  {
+    quote: "The first calculation estimates; the second checks.",
+    author: "AETHER"
+  },
+  {
+    quote: "A project becomes serious when its decisions are documented.",
+    author: "AETHER"
+  },
+  {
+    quote: "You improve faster when you study your errors systematically.",
+    author: "AETHER"
+  },
+  {
+    quote: "The computer executes instructions, not intentions.",
+    author: "AETHER"
+  },
+  {
+    quote: "A graph can reveal what a table hides.",
+    author: "AETHER"
+  },
+  {
+    quote: "A clear limitation strengthens rather than weakens an analysis.",
+    author: "AETHER"
+  },
+  {
+    quote: "Engineering judgement begins where formulas stop deciding.",
+    author: "AETHER"
+  },
+  {
+    quote: "Make the hidden assumptions explicit.",
+    author: "AETHER"
+  },
+  {
+    quote: "A simulation is useful when it changes a decision.",
+    author: "AETHER"
+  },
+  {
+    quote: "Strong foundations make advanced ideas feel natural.",
+    author: "AETHER"
+  },
+  {
+    quote: "The best workflow removes friction from repeated tasks.",
+    author: "AETHER"
+  },
+  {
+    quote: "If a method cannot be validated, its output should be treated cautiously.",
+    author: "AETHER"
+  },
+  {
+    quote: "A mechanism understood from first principles is easier to improve.",
+    author: "AETHER"
+  },
+  {
+    quote: "The shortest code is not always the clearest code.",
+    author: "AETHER"
+  },
+  {
+    quote: "Build for the problem you have, not the complexity you imagine.",
+    author: "AETHER"
+  },
+  {
+    quote: "Every useful model leaves something out deliberately.",
+    author: "AETHER"
+  },
+  {
+    quote: "A precise definition can solve half the problem.",
+    author: "AETHER"
+  },
+  {
+    quote: "Curiosity becomes expertise through disciplined follow-through.",
+    author: "AETHER"
+  },
+  {
+    quote: "The difference between a guess and an estimate is the reasoning.",
+    author: "AETHER"
+  },
+  {
+    quote: "Good design makes correct use easier than incorrect use.",
+    author: "AETHER"
+  },
+  {
+    quote: "The most impressive project is one you can explain completely.",
+    author: "AETHER"
+  },
+  {
+    quote: "When two methods disagree, investigate before averaging.",
+    author: "AETHER"
+  },
+  {
+    quote: "Real progress often looks like fewer unexplained details.",
+    author: "AETHER"
+  },
+  {
+    quote: "A solver is only as good as its convergence criteria.",
+    author: "AETHER"
+  },
+  {
+    quote: "Visualisation should reveal structure, not merely decorate output.",
+    author: "AETHER"
+  },
+  {
+    quote: "A strong engineer asks what evidence would change the conclusion.",
+    author: "AETHER"
+  },
+  {
+    quote: "Documentation preserves the reasoning behind the result.",
+    author: "AETHER"
+  },
+  {
+    quote: "The best time to simplify is before complexity becomes permanent.",
+    author: "AETHER"
+  },
+  {
+    quote: "A physical test and a simulation answer different parts of the same question.",
+    author: "AETHER"
+  },
+  {
+    quote: "The purpose of validation is not to prove perfection but to quantify trust.",
+    author: "AETHER"
+  },
+  {
+    quote: "Good assumptions are visible, justified and revisable.",
+    author: "AETHER"
+  },
+  {
+    quote: "A project grows when its interfaces are designed carefully.",
+    author: "AETHER"
+  },
+  {
+    quote: "The deeper the theory, the more useful the approximation becomes.",
+    author: "AETHER"
+  },
+  {
+    quote: "A correct answer reached accidentally is not yet understanding.",
+    author: "AETHER"
+  },
+  {
+    quote: "Make each revision remove a specific weakness.",
+    author: "AETHER"
+  },
+  {
+    quote: "A reliable system fails clearly rather than silently.",
+    author: "AETHER"
+  },
+  {
+    quote: "There is no substitute for checking units.",
+    author: "AETHER"
+  },
+  {
+    quote: "The most useful models are understandable enough to challenge.",
+    author: "AETHER"
+  },
+  {
+    quote: "An elegant solution usually exposes the governing structure.",
+    author: "AETHER"
+  },
+  {
+    quote: "Do not confuse computational expense with physical accuracy.",
+    author: "AETHER"
+  },
+  {
+    quote: "A difficult derivation is easier when each step has a purpose.",
+    author: "AETHER"
+  },
+  {
+    quote: "You do not need every tool; you need the right tool used well.",
+    author: "AETHER"
+  },
+  {
+    quote: "The best experiments isolate the variable that matters.",
+    author: "AETHER"
+  },
+  {
+    quote: "Learning accelerates when theory is connected to something you build.",
+    author: "AETHER"
+  },
+  {
+    quote: "A good project question creates a path for evaluation.",
+    author: "AETHER"
+  },
+  {
+    quote: "When performance matters, measure before optimising.",
+    author: "AETHER"
+  },
+  {
+    quote: "A system is understandable when its components and interactions are explicit.",
+    author: "AETHER"
+  },
+  {
+    quote: "Strong technical work includes uncertainty, not just conclusions.",
+    author: "AETHER"
+  },
+  {
+    quote: "The most valuable revision is the one that improves the reasoning.",
+    author: "AETHER"
+  },
+  {
+    quote: "A practical solution can still be mathematically rigorous.",
+    author: "AETHER"
+  },
+  {
+    quote: "Breakthroughs often begin as better representations of old problems.",
+    author: "AETHER"
+  },
+  {
+    quote: "The goal is not to remove every error but to understand and control it.",
+    author: "AETHER"
+  },
+  {
+    quote: "A reliable estimate should survive a change in method.",
+    author: "AETHER"
+  },
+  {
+    quote: "Build knowledge in layers: principle, model, implementation, validation.",
+    author: "AETHER"
+  },
+  {
+    quote: "The best engineering habit is to ask what would make the result wrong.",
+    author: "AETHER"
+  },
+  {
+    quote: "Finish the version that works, then improve the version that matters.",
+    author: "AETHER"
   }
 ];
 
-function showFallbackQuote() {
-  if (!quoteText || !quoteAuthor) return;
+let previousQuoteIndex = -1;
 
-  const quote =
-    fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+function showRandomQuote() {
+  if (!quoteText || !quoteAuthor || motivationalQuotes.length === 0) return;
 
-  quoteText.textContent = quote.quote;
-  quoteAuthor.textContent = `— ${quote.author}`;
+  let index;
+
+  do {
+    index = Math.floor(Math.random() * motivationalQuotes.length);
+  } while (
+    motivationalQuotes.length > 1 &&
+    index === previousQuoteIndex
+  );
+
+  previousQuoteIndex = index;
+
+  const selectedQuote = motivationalQuotes[index];
+  quoteText.textContent = selectedQuote.quote;
+  quoteAuthor.textContent = `— ${selectedQuote.author}`;
 }
 
 themeToggle.addEventListener("click", () => {
@@ -680,9 +979,9 @@ quickNote.addEventListener("input", () => {
 });
 
 if (newQuoteButton) {
-  newQuoteButton.addEventListener("click", showFallbackQuote);
+  newQuoteButton.addEventListener("click", showRandomQuote);
 }
-showFallbackQuote();
+showRandomQuote();
 
 initialiseTheme();
 updateClock();
