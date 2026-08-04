@@ -65,6 +65,7 @@ const quickNote = document.querySelector("#quickNote");
 const quoteText = document.querySelector("#quoteText");
 const quoteAuthor = document.querySelector("#quoteAuthor");
 const newQuoteButton = document.querySelector("#newQuoteButton");
+const quoteField = document.querySelector("#quoteField");
 
 const modalBackdrop = document.querySelector("#modalBackdrop");
 const linkModal = document.querySelector("#linkModal");
@@ -950,6 +951,10 @@ function showRandomQuote() {
   const selectedQuote = motivationalQuotes[index];
   quoteText.textContent = selectedQuote.quote;
   quoteAuthor.textContent = `— ${selectedQuote.author}`;
+
+  if (quoteField) {
+      quoteField.textContent = selectedQuote.field;
+  }
 }
 
 themeToggle.addEventListener("click", () => {
