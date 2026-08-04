@@ -981,6 +981,26 @@ footer {
   font-size: 0.72rem;
 }
 
+.quote-field {
+  display: inline-block;
+
+  margin-top: 8px;
+  padding: 4px 10px;
+
+  border: 1px solid rgba(103, 213, 255, 0.35);
+  border-radius: 999px;
+
+  background: rgba(103, 213, 255, 0.08);
+
+  color: var(--accent);
+
+  font-size: 0.72rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 
 /* Dashboard without hero */
 .main-column > .dashboard-grid {
