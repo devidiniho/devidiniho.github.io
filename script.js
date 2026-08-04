@@ -1,7 +1,54 @@
 const storageKeys = {
   theme: "devid-dashboard-theme",
   tasks: "devid-dashboard-tasks",
-  quickNote: "devid-dashboard-quick-note"
+  quickNote: "devid-dashboard-quick-note",
+  customLinks: "devid-dashboard-custom-links-v3",
+  projects: "devid-dashboard-projects-v3"
+};
+
+const defaultLinks = {
+  learn: [
+    { name: "MIT OpenCourseWare", url: "https://ocw.mit.edu/", description: "University-level material" },
+    { name: "Isaac Physics", url: "https://isaacphysics.org/", description: "Physics problem solving" },
+    { name: "Khan Academy", url: "https://www.khanacademy.org/", description: "Core explanations" },
+    { name: "Coursera", url: "https://www.coursera.org/", description: "Structured courses" },
+    { name: "edX", url: "https://www.edx.org/", description: "University courses" }
+  ],
+  build: [
+    { name: "Onshape", url: "https://cad.onshape.com/", description: "Browser CAD" },
+    { name: "Autodesk Fusion", url: "https://www.autodesk.com/products/fusion-360/personal", description: "CAD, CAM and simulation" },
+    { name: "GrabCAD Library", url: "https://grabcad.com/library", description: "Reference models" },
+    { name: "McMaster-Carr", url: "https://www.mcmaster.com/", description: "Standard components" },
+    { name: "TraceParts", url: "https://www.traceparts.com/", description: "Supplier CAD models" }
+  ],
+  analyse: [
+    { name: "SimScale", url: "https://www.simscale.com/", description: "Cloud CFD and FEA" },
+    { name: "OpenFOAM", url: "https://www.openfoam.com/", description: "Open-source CFD" },
+    { name: "ParaView", url: "https://www.paraview.org/", description: "Scientific visualisation" },
+    { name: "SU2", url: "https://su2code.github.io/", description: "Open-source multiphysics" },
+    { name: "CFD Online", url: "https://www.cfd-online.com/", description: "Community and reference" }
+  ],
+  develop: [
+    { name: "GitHub", url: "https://github.com/", description: "Repositories and portfolio" },
+    { name: "VS Code Web", url: "https://vscode.dev/", description: "Browser editor" },
+    { name: "Python Documentation", url: "https://docs.python.org/3/", description: "Language reference" },
+    { name: "NumPy Documentation", url: "https://numpy.org/doc/", description: "Numerical arrays" },
+    { name: "SciPy Documentation", url: "https://docs.scipy.org/doc/scipy/", description: "Scientific computing" }
+  ],
+  research: [
+    { name: "Google Scholar", url: "https://scholar.google.com/", description: "Academic search" },
+    { name: "arXiv", url: "https://arxiv.org/", description: "Research preprints" },
+    { name: "Semantic Scholar", url: "https://www.semanticscholar.org/", description: "Paper discovery" },
+    { name: "NASA Technical Reports", url: "https://ntrs.nasa.gov/", description: "Aerospace research" },
+    { name: "ScienceDirect", url: "https://www.sciencedirect.com/", description: "Journal articles" }
+  ],
+  tools: [
+    { name: "Google Drive", url: "https://drive.google.com/", description: "Files and archive" },
+    { name: "Google Docs", url: "https://docs.google.com/", description: "Writing and reports" },
+    { name: "Overleaf", url: "https://www.overleaf.com/", description: "LaTeX documents" },
+    { name: "Wolfram|Alpha", url: "https://www.wolframalpha.com/", description: "Symbolic calculation" },
+    { name: "Desmos", url: "https://www.desmos.com/calculator", description: "Graphing calculator" }
+  ]
 };
 
 const clockElement = document.querySelector("#clock");
@@ -14,6 +61,35 @@ const clearTasks = document.querySelector("#clearTasks");
 const calendarGrid = document.querySelector("#calendarGrid");
 const calendarTitle = document.querySelector("#calendarTitle");
 const quickNote = document.querySelector("#quickNote");
+
+const modalBackdrop = document.querySelector("#modalBackdrop");
+const linkModal = document.querySelector("#linkModal");
+const projectModal = document.querySelector("#projectModal");
+const projectDetailsModal = document.querySelector("#projectDetailsModal");
+
+const linkForm = document.querySelector("#linkForm");
+const linkCategory = document.querySelector("#linkCategory");
+const linkEditIndex = document.querySelector("#linkEditIndex");
+const linkName = document.querySelector("#linkName");
+const linkUrl = document.querySelector("#linkUrl");
+const linkDescription = document.querySelector("#linkDescription");
+
+const projectForm = document.querySelector("#projectForm");
+const projectEditIndex = document.querySelector("#projectEditIndex");
+const projectName = document.querySelector("#projectName");
+const projectDescription = document.querySelector("#projectDescription");
+const projectLinkRows = document.querySelector("#projectLinkRows");
+const addProjectLinkRow = document.querySelector("#addProjectLinkRow");
+const addProjectButton = document.querySelector("#addProjectButton");
+const projectList = document.querySelector("#projectList");
+
+const projectDetailsTitle = document.querySelector("#projectDetailsTitle");
+const projectDetailsDescription = document.querySelector("#projectDetailsDescription");
+const projectDetailsLinks = document.querySelector("#projectDetailsLinks");
+const editProjectButton = document.querySelector("#editProjectButton");
+const deleteProjectButton = document.querySelector("#deleteProjectButton");
+
+let activeProjectIndex = null;
 
 function updateClock() {
   const now = new Date();
@@ -67,14 +143,10 @@ function buildCalendar() {
     cell.className = "calendar-day";
     cell.textContent = cellDate.getDate();
 
-    if (cellDate.getMonth() !== month) {
-      cell.classList.add("other-month");
-    }
+    if (cellDate.getMonth() !== month) cell.classList.add("other-month");
 
     const day = cellDate.getDay();
-    if (day === 0 || day === 6) {
-      cell.classList.add("weekend");
-    }
+    if (day === 0 || day === 6) cell.classList.add("weekend");
 
     if (
       cellDate.getFullYear() === today.getFullYear() &&
@@ -84,16 +156,6 @@ function buildCalendar() {
       cell.classList.add("current");
       cell.setAttribute("aria-current", "date");
     }
-
-    cell.setAttribute(
-      "aria-label",
-      new Intl.DateTimeFormat("en-GB", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      }).format(cellDate)
-    );
 
     calendarGrid.appendChild(cell);
   }
@@ -129,7 +191,6 @@ function renderTasks() {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = task.completed;
-    checkbox.setAttribute("aria-label", `Mark ${task.text} complete`);
     checkbox.addEventListener("change", () => {
       const currentTasks = getTasks();
       currentTasks[index].completed = checkbox.checked;
@@ -144,7 +205,6 @@ function renderTasks() {
     removeButton.type = "button";
     removeButton.className = "delete-task";
     removeButton.textContent = "×";
-    removeButton.setAttribute("aria-label", `Delete ${task.text}`);
     removeButton.addEventListener("click", () => {
       const currentTasks = getTasks();
       currentTasks.splice(index, 1);
@@ -156,6 +216,312 @@ function renderTasks() {
     taskList.appendChild(item);
   });
 }
+
+function getLinks() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKeys.customLinks));
+    return saved || structuredClone(defaultLinks);
+  } catch {
+    return structuredClone(defaultLinks);
+  }
+}
+
+function saveLinks(links) {
+  localStorage.setItem(storageKeys.customLinks, JSON.stringify(links));
+}
+
+function renderLinks() {
+  const links = getLinks();
+
+  document.querySelectorAll("[data-category]").forEach(container => {
+    const category = container.dataset.category;
+    container.innerHTML = "";
+
+    links[category].forEach((link, index) => {
+      const row = document.createElement("div");
+      row.className = "link-row";
+
+      const anchor = document.createElement("a");
+      anchor.href = link.url;
+      anchor.target = "_blank";
+      anchor.rel = "noopener";
+
+      const title = document.createElement("span");
+      title.textContent = link.name;
+
+      const description = document.createElement("small");
+      description.textContent = link.description || "Custom website";
+
+      anchor.append(title, description);
+
+      const controls = document.createElement("div");
+      controls.className = "link-controls";
+
+      const editButton = document.createElement("button");
+      editButton.type = "button";
+      editButton.className = "mini-control";
+      editButton.textContent = "✎";
+      editButton.title = "Edit website";
+      editButton.addEventListener("click", () => openLinkModal(category, index));
+
+      const deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.className = "mini-control";
+      deleteButton.textContent = "×";
+      deleteButton.title = "Delete website";
+      deleteButton.addEventListener("click", () => {
+        if (!confirm(`Delete "${link.name}"?`)) return;
+        const current = getLinks();
+        current[category].splice(index, 1);
+        saveLinks(current);
+        renderLinks();
+      });
+
+      controls.append(editButton, deleteButton);
+      row.append(anchor, controls);
+      container.appendChild(row);
+    });
+  });
+}
+
+function showModal(modal) {
+  modalBackdrop.classList.remove("hidden");
+  modalBackdrop.setAttribute("aria-hidden", "false");
+  [linkModal, projectModal, projectDetailsModal].forEach(item => item.classList.add("hidden"));
+  modal.classList.remove("hidden");
+}
+
+function closeModals() {
+  modalBackdrop.classList.add("hidden");
+  modalBackdrop.setAttribute("aria-hidden", "true");
+  [linkModal, projectModal, projectDetailsModal].forEach(item => item.classList.add("hidden"));
+}
+
+function openLinkModal(category, index = null) {
+  linkForm.reset();
+  linkCategory.value = category;
+  linkEditIndex.value = index ?? "";
+  document.querySelector("#linkModalTitle").textContent = index === null ? "Add website" : "Edit website";
+
+  if (index !== null) {
+    const link = getLinks()[category][index];
+    linkName.value = link.name;
+    linkUrl.value = link.url;
+    linkDescription.value = link.description || "";
+  }
+
+  showModal(linkModal);
+  linkName.focus();
+}
+
+function getProjects() {
+  try {
+    return JSON.parse(localStorage.getItem(storageKeys.projects)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function saveProjects(projects) {
+  localStorage.setItem(storageKeys.projects, JSON.stringify(projects));
+}
+
+function renderProjects() {
+  const projects = getProjects();
+  projectList.innerHTML = "";
+
+  if (projects.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.textContent = "No projects yet. Add one when you begin.";
+    projectList.appendChild(empty);
+    return;
+  }
+
+  projects.forEach((project, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "project-card-button";
+
+    const title = document.createElement("strong");
+    title.textContent = project.name;
+
+    const description = document.createElement("small");
+    description.textContent = project.description || `${project.links.length} relevant link${project.links.length === 1 ? "" : "s"}`;
+
+    button.append(title, description);
+    button.addEventListener("click", () => openProjectDetails(index));
+    projectList.appendChild(button);
+  });
+}
+
+function addProjectLinkInput(label = "", url = "") {
+  const row = document.createElement("div");
+  row.className = "project-link-row";
+
+  const labelInput = document.createElement("input");
+  labelInput.type = "text";
+  labelInput.placeholder = "Link name, e.g. Google Drive";
+  labelInput.value = label;
+  labelInput.dataset.projectLinkLabel = "";
+
+  const urlInput = document.createElement("input");
+  urlInput.type = "url";
+  urlInput.placeholder = "https://...";
+  urlInput.value = url;
+  urlInput.dataset.projectLinkUrl = "";
+
+  const removeButton = document.createElement("button");
+  removeButton.type = "button";
+  removeButton.className = "remove-row-button";
+  removeButton.textContent = "×";
+  removeButton.title = "Remove link";
+  removeButton.addEventListener("click", () => row.remove());
+
+  row.append(labelInput, urlInput, removeButton);
+  projectLinkRows.appendChild(row);
+}
+
+function openProjectEditor(index = null) {
+  projectForm.reset();
+  projectLinkRows.innerHTML = "";
+  projectEditIndex.value = index ?? "";
+  document.querySelector("#projectModalTitle").textContent = index === null ? "Add project" : "Edit project";
+
+  if (index !== null) {
+    const project = getProjects()[index];
+    projectName.value = project.name;
+    projectDescription.value = project.description || "";
+    project.links.forEach(link => addProjectLinkInput(link.label, link.url));
+  } else {
+    addProjectLinkInput();
+  }
+
+  showModal(projectModal);
+  projectName.focus();
+}
+
+function openProjectDetails(index) {
+  const project = getProjects()[index];
+  if (!project) return;
+
+  activeProjectIndex = index;
+  projectDetailsTitle.textContent = project.name;
+  projectDetailsDescription.textContent = project.description || "No description added.";
+  projectDetailsLinks.innerHTML = "";
+
+  if (project.links.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.textContent = "No links added yet.";
+    projectDetailsLinks.appendChild(empty);
+  } else {
+    project.links.forEach(link => {
+      const anchor = document.createElement("a");
+      anchor.href = link.url;
+      anchor.target = "_blank";
+      anchor.rel = "noopener";
+      anchor.textContent = link.label || link.url;
+      projectDetailsLinks.appendChild(anchor);
+    });
+  }
+
+  showModal(projectDetailsModal);
+}
+
+document.querySelectorAll("[data-add-link]").forEach(button => {
+  button.addEventListener("click", () => openLinkModal(button.dataset.addLink));
+});
+
+document.querySelectorAll("[data-close-modal]").forEach(button => {
+  button.addEventListener("click", closeModals);
+});
+
+modalBackdrop.addEventListener("click", event => {
+  if (event.target === modalBackdrop) closeModals();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeModals();
+});
+
+linkForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const category = linkCategory.value;
+  const editIndex = linkEditIndex.value === "" ? null : Number(linkEditIndex.value);
+  const links = getLinks();
+  const entry = {
+    name: linkName.value.trim(),
+    url: linkUrl.value.trim(),
+    description: linkDescription.value.trim()
+  };
+
+  if (editIndex === null) {
+    links[category].push(entry);
+  } else {
+    links[category][editIndex] = entry;
+  }
+
+  saveLinks(links);
+  renderLinks();
+  closeModals();
+});
+
+addProjectButton.addEventListener("click", () => openProjectEditor());
+addProjectLinkRow.addEventListener("click", () => addProjectLinkInput());
+
+projectForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const labels = [...projectLinkRows.querySelectorAll("[data-project-link-label]")];
+  const urls = [...projectLinkRows.querySelectorAll("[data-project-link-url]")];
+  const links = [];
+
+  labels.forEach((input, index) => {
+    const label = input.value.trim();
+    const url = urls[index].value.trim();
+    if (label && url) links.push({ label, url });
+  });
+
+  const project = {
+    name: projectName.value.trim(),
+    description: projectDescription.value.trim(),
+    links
+  };
+
+  const projects = getProjects();
+  const editIndex = projectEditIndex.value === "" ? null : Number(projectEditIndex.value);
+
+  if (editIndex === null) {
+    projects.push(project);
+  } else {
+    projects[editIndex] = project;
+  }
+
+  saveProjects(projects);
+  renderProjects();
+  closeModals();
+});
+
+editProjectButton.addEventListener("click", () => {
+  if (activeProjectIndex === null) return;
+  openProjectEditor(activeProjectIndex);
+});
+
+deleteProjectButton.addEventListener("click", () => {
+  if (activeProjectIndex === null) return;
+
+  const projects = getProjects();
+  const project = projects[activeProjectIndex];
+  if (!confirm(`Delete "${project.name}"?`)) return;
+
+  projects.splice(activeProjectIndex, 1);
+  saveProjects(projects);
+  activeProjectIndex = null;
+  renderProjects();
+  closeModals();
+});
 
 themeToggle.addEventListener("click", () => {
   setTheme(document.body.classList.contains("light") ? "dark" : "light");
@@ -174,8 +540,7 @@ taskForm.addEventListener("submit", event => {
 });
 
 clearTasks.addEventListener("click", () => {
-  const remainingTasks = getTasks().filter(task => !task.completed);
-  saveTasks(remainingTasks);
+  saveTasks(getTasks().filter(task => !task.completed));
   renderTasks();
 });
 
@@ -187,5 +552,7 @@ quickNote.addEventListener("input", () => {
 initialiseTheme();
 updateClock();
 buildCalendar();
-setInterval(updateClock, 1000);
+renderLinks();
+renderProjects();
 renderTasks();
+setInterval(updateClock, 1000);
