@@ -41,13 +41,26 @@
         <div id="calendarGrid" class="calendar-grid" aria-label="Current month calendar"></div>
       </section>
 
-      <section class="panel snapshot-panel">
-        <p class="eyebrow">SNAPSHOT</p>
-        <div class="snapshot-list">
-          <div><span>Active projects</span><strong>4</strong></div>
-          <div><span>Primary focus</span><strong>CAD</strong></div>
-          <div><span>Current stage</span><strong>Build</strong></div>
+      <section class="panel quote-panel">
+        <div class="quote-heading">
+          <p class="eyebrow">MOTIVATION</p>
+      
+          <button
+            id="newQuoteButton"
+            class="quote-refresh"
+            type="button"
+            aria-label="Show another quote"
+            title="Show another quote"
+          >
+            ↻
+          </button>
         </div>
+      
+        <blockquote id="quoteText">
+          Loading quote…
+        </blockquote>
+      
+        <p id="quoteAuthor" class="quote-author"></p>
       </section>
 
       <section class="panel mini-links-panel">
