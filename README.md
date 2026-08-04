@@ -1,29 +1,30 @@
-# AETHER Dashboard — Replacement Files
+# AETHER Dashboard V5 — Real Quotes Fix
 
-This package replaces the existing dashboard files completely.
+This version contains the previously prepared bank of 100 attributed quotations.
 
-## Included
+The earlier AETHER-authored quotations are not used.
+
+## Important fix
+
+The HTML now loads:
+
+- `style.css?v=5`
+- `script.js?v=5`
+
+The query strings force Chrome and GitHub Pages to request the new files instead of continuing to use an older cached script.
+
+## Installation
+
+Replace all three files together:
 
 - `index.html`
 - `style.css`
 - `script.js`
 
-## Changes
+Commit them in the same GitHub commit. Wait for Pages to redeploy, then reload the site.
 
-- Rebrands the page as **AETHER Dashboard**
-- Removes the large quick-search panel
-- Moves the six resource cards directly to the top
-- Uses a fully local quote bank with 100 attributed quotations
-- Displays the quotation author and discipline badge
-- Removes all online quote API requests
-- Keeps editable websites, projects, tasks, calendar, quick note and theme switching
-- Preserves existing browser data because the same localStorage keys are retained
+The quote panel will display:
 
-## Installation
-
-Upload these three files to the root of the GitHub Pages repository and replace the existing files with the same names.
-
-After committing, wait for GitHub Pages to deploy, then hard-refresh:
-
-- macOS: `Command + Shift + R`
-- Windows: `Ctrl + Shift + R`
+- quotation
+- real attributed author
+- discipline/field badge
