@@ -1,30 +1,13 @@
-# AETHER Dashboard V5 — Real Quotes Fix
+# AETHER Dashboard V6 — Layout Fix
 
-This version contains the previously prepared bank of 100 attributed quotations.
+This version restores the original three-column resource-card layout.
 
-The earlier AETHER-authored quotations are not used.
+The prior stylesheet accidentally lost the main `.dashboard-grid` rule, which caused all six middle cards to stack vertically at full width.
 
-## Important fix
-
-The HTML now loads:
-
-- `style.css?v=5`
-- `script.js?v=5`
-
-The query strings force Chrome and GitHub Pages to request the new files instead of continuing to use an older cached script.
-
-## Installation
-
-Replace all three files together:
+## Replace together
 
 - `index.html`
 - `style.css`
 - `script.js`
 
-Commit them in the same GitHub commit. Wait for Pages to redeploy, then reload the site.
-
-The quote panel will display:
-
-- quotation
-- real attributed author
-- discipline/field badge
+The HTML now requests `style.css?v=6` and `script.js?v=6` to bypass cached copies.

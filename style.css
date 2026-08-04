@@ -206,6 +206,14 @@ footer {
 }
 
 
+
+.dashboard-grid {
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
 .link-card { padding: 24px; }
 
 .card-heading {
