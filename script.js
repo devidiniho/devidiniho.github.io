@@ -62,6 +62,10 @@ const calendarGrid = document.querySelector("#calendarGrid");
 const calendarTitle = document.querySelector("#calendarTitle");
 const quickNote = document.querySelector("#quickNote");
 
+const quoteText = document.querySelector("#quoteText");
+const quoteAuthor = document.querySelector("#quoteAuthor");
+const newQuoteButton = document.querySelector("#newQuoteButton");
+
 const modalBackdrop = document.querySelector("#modalBackdrop");
 const linkModal = document.querySelector("#linkModal");
 const projectModal = document.querySelector("#projectModal");
@@ -523,6 +527,65 @@ deleteProjectButton.addEventListener("click", () => {
   closeModals();
 });
 
+
+const fallbackQuotes = [
+  {
+    quote: "The important thing is not to stop questioning.",
+    author: "Albert Einstein"
+  },
+  {
+    quote: "What we know is a drop; what we do not know is an ocean.",
+    author: "Isaac Newton"
+  },
+  {
+    quote: "Nothing is too wonderful to be true, if it is consistent with the laws of nature.",
+    author: "Michael Faraday"
+  }
+];
+
+function showFallbackQuote() {
+  if (!quoteText || !quoteAuthor) return;
+
+  const quote =
+    fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+
+  quoteText.textContent = quote.quote;
+  quoteAuthor.textContent = `— ${quote.author}`;
+}
+
+async function showOnlineQuote() {
+  if (!quoteText || !quoteAuthor || !newQuoteButton) return;
+
+  quoteText.textContent = "Loading a new quote…";
+  quoteAuthor.textContent = "";
+  newQuoteButton.disabled = true;
+
+  try {
+    const response = await fetch(
+      `https://dummyjson.com/quotes/random?timestamp=${Date.now()}`,
+      { cache: "no-store" }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Quote request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.quote || !data.author) {
+      throw new Error("The quote service returned incomplete data.");
+    }
+
+    quoteText.textContent = data.quote;
+    quoteAuthor.textContent = `— ${data.author}`;
+  } catch (error) {
+    console.error("Could not load an online quote:", error);
+    showFallbackQuote();
+  } finally {
+    newQuoteButton.disabled = false;
+  }
+}
+
 themeToggle.addEventListener("click", () => {
   setTheme(document.body.classList.contains("light") ? "dark" : "light");
 });
@@ -549,65 +612,10 @@ quickNote.addEventListener("input", () => {
   localStorage.setItem(storageKeys.quickNote, quickNote.value);
 });
 
-const quoteText = document.querySelector("#quoteText");
-const quoteAuthor = document.querySelector("#quoteAuthor");
-const newQuoteButton = document.querySelector("#newQuoteButton");
-
-const motivationalQuotes = [
-  {
-    text: "What we know is a drop; what we do not know is an ocean.",
-    author: "Isaac Newton"
-  },
-  {
-    text: "Nothing is too wonderful to be true, if it is consistent with the laws of nature.",
-    author: "Michael Faraday"
-  },
-  {
-    text: "The important thing is not to stop questioning.",
-    author: "Albert Einstein"
-  },
-  {
-    text: "Success is the result of preparation, hard work, and learning from failure.",
-    author: "Colin Powell"
-  },
-  {
-    text: "Somewhere, something incredible is waiting to be known.",
-    author: "Carl Sagan"
-  },
-  {
-    text: "An experiment is a question which science poses to nature.",
-    author: "Max Planck"
-  },
-  {
-    text: "The present is theirs; the future, for which I really worked, is mine.",
-    author: "Nikola Tesla"
-  },
-  {
-    text: "There is no great invention without a bold guess.",
-    author: "Isaac Newton"
-  }
-];
-
-function showRandomQuote() {
-  const previousQuote = quoteText.dataset.quoteIndex;
-  let index;
-
-  do {
-    index = Math.floor(Math.random() * motivationalQuotes.length);
-  } while (
-    motivationalQuotes.length > 1 &&
-    String(index) === previousQuote
-  );
-
-  const quote = motivationalQuotes[index];
-
-  quoteText.textContent = quote.text;
-  quoteAuthor.textContent = `— ${quote.author}`;
-  quoteText.dataset.quoteIndex = String(index);
+if (newQuoteButton) {
+  newQuoteButton.addEventListener("click", showOnlineQuote);
 }
-
-newQuoteButton.addEventListener("click", showRandomQuote);
-showRandomQuote();
+showOnlineQuote();
 
 initialiseTheme();
 updateClock();
@@ -616,4 +624,3 @@ renderLinks();
 renderProjects();
 renderTasks();
 setInterval(updateClock, 1000);
-

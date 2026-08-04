@@ -913,8 +913,8 @@ footer {
   }
 }
 
-/* Motivational quote panel */
 
+/* Online motivational quote panel */
 .quote-panel {
   min-height: 210px;
   display: flex;
@@ -943,13 +943,19 @@ footer {
   transition:
     color 150ms ease,
     border-color 150ms ease,
-    transform 150ms ease;
+    transform 150ms ease,
+    opacity 150ms ease;
 }
 
-.quote-refresh:hover {
+.quote-refresh:hover:not(:disabled) {
   color: var(--accent);
   border-color: var(--accent);
   transform: rotate(30deg);
+}
+
+.quote-refresh:disabled {
+  cursor: wait;
+  opacity: 0.45;
 }
 
 .quote-panel blockquote {
@@ -973,4 +979,10 @@ footer {
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.72rem;
+}
+
+
+/* Dashboard without hero */
+.main-column > .dashboard-grid {
+  margin-top: 0;
 }

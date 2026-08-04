@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AETHER launch portal">
+  <title>AETHER</title>
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body>
+  <div class="background-grid" aria-hidden="true"></div>
+
+  <main class="portal-shell">
+    <section class="portal-header">
+      <div class="date-block">
+        <strong id="portalClock">--:--</strong>
+        <span id="portalDate">Loading date…</span>
+      </div>
+
+      <button id="themeToggle" class="round-button" type="button" aria-label="Toggle colour theme">◐</button>
+    </section>
+
+    <section class="identity">
+      <img src="assets/aether-logo.png" alt="AETHER" class="aether-logo">
+      <p>DESIGN · BUILD · ANALYSE</p>
+    </section>
+
+    <section class="search-panel">
+      <form id="searchForm" class="search-form">
+        <label class="sr-only" for="searchInput">Search</label>
+        <input
+          id="searchInput"
+          type="search"
+          autocomplete="off"
+          placeholder="Search Google or use a command…"
+        >
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="command-help">
+        <span><kbd>g</kbd> Google</span>
+        <span><kbd>yt</kbd> YouTube</span>
+        <span><kbd>gh</kbd> GitHub</span>
+        <span><kbd>sch</kbd> Scholar</span>
+        <span><kbd>arxiv</kbd> arXiv</span>
+        <span><kbd>w</kbd> Wikipedia</span>
+      </div>
+    </section>
+
+    <section class="shortcuts-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">QUICK ACCESS</p>
+          <h1>Shortcuts</h1>
+        </div>
+        <button id="addShortcutButton" class="add-button" type="button">+ Add shortcut</button>
+      </div>
+
+      <div id="shortcutGrid" class="shortcut-grid" aria-live="polite"></div>
+    </section>
+
+    <a class="dashboard-button" href="index.html">
+      <span>Open AETHER Dashboard</span>
+      <small>Projects, resources, tasks and notes</small>
+    </a>
+  </main>
+
+  <div id="modalBackdrop" class="modal-backdrop hidden" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">SHORTCUT</p>
+          <h2 id="modalTitle">Add shortcut</h2>
+        </div>
+        <button id="closeModalButton" class="modal-close" type="button" aria-label="Close">×</button>
+      </div>
+
+      <form id="shortcutForm" class="modal-form">
+        <input id="shortcutEditIndex" type="hidden">
+
+        <label>
+          Name
+          <input id="shortcutName" type="text" maxlength="40" required>
+        </label>
+
+        <label>
+          URL
+          <input id="shortcutUrl" type="url" placeholder="https://..." required>
+        </label>
+
+        <label>
+          Initials
+          <input id="shortcutInitials" type="text" maxlength="3" placeholder="e.g. GH">
+        </label>
+
+        <div class="modal-actions">
+          <button id="deleteShortcutButton" class="danger-button hidden" type="button">Delete</button>
+          <button id="cancelShortcutButton" class="secondary-button" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Save shortcut</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script src="portal.js"></script>
+</body>
+</html>
