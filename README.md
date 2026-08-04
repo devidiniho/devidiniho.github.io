@@ -1,42 +1,29 @@
-# AETHER Dashboard V4
+# AETHER Dashboard — Replacement Files
 
-This package contains both the full dashboard and the minimal AETHER portal/new-tab page.
+This package replaces the existing dashboard files completely.
 
-## Pages
+## Included
 
-- `index.html` — full AETHER Dashboard
-- `portal.html` — minimal AETHER new-tab page
+- `index.html`
+- `style.css`
+- `script.js`
 
-## New portal features
+## Changes
 
-- AETHER logo
-- Google search
-- Search prefixes:
-  - `g` Google
-  - `yt` YouTube
-  - `gh` GitHub
-  - `sch` Google Scholar
-  - `arxiv` arXiv
-  - `w` Wikipedia
-- Customisable shortcuts
-- Add, edit and delete shortcuts
-- Automatic initials
-- Scrollable shortcut grid
-- Live clock and date
-- Light/dark theme
-- Link back to the full dashboard
+- Rebrands the page as **AETHER Dashboard**
+- Removes the large quick-search panel
+- Moves the six resource cards directly to the top
+- Uses a fully local quote bank with 100 attributed quotations
+- Displays the quotation author and discipline badge
+- Removes all online quote API requests
+- Keeps editable websites, projects, tasks, calendar, quick note and theme switching
+- Preserves existing browser data because the same localStorage keys are retained
 
-## Dashboard change
+## Installation
 
-The large “What are you working on?” search panel was removed. The resource grid now moves directly to the top of the centre column.
+Upload these three files to the root of the GitHub Pages repository and replace the existing files with the same names.
 
-## Uploading
+After committing, wait for GitHub Pages to deploy, then hard-refresh:
 
-Upload all files and the `assets` folder to the root of your GitHub Pages repository.
-
-Use:
-
-- `https://devidiniho.github.io/` for the dashboard
-- `https://devidiniho.github.io/portal.html` for the new-tab page
-
-Your custom shortcuts are stored in the browser using localStorage.
+- macOS: `Command + Shift + R`
+- Windows: `Ctrl + Shift + R`

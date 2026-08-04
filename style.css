@@ -167,25 +167,9 @@ footer {
   backdrop-filter: blur(16px);
 }
 
-.hero {
-  padding: clamp(24px, 3vw, 48px);
-}
 
-.hero h2 {
-  max-width: 900px;
-  margin-bottom: 10px;
-  font-size: clamp(1.9rem, 3.2vw, 3.5rem);
-  letter-spacing: -0.055em;
-}
 
-.search-form {
-  max-width: 1000px;
-  margin-top: 30px;
-  display: flex;
-  gap: 10px;
-}
 
-.search-form input,
 .task-form input,
 .note-panel textarea {
   min-width: 0;
@@ -195,21 +179,13 @@ footer {
   background: var(--bg);
 }
 
-.search-form input {
-  flex: 1;
-  padding: 18px 20px;
-  border-radius: 14px;
-  font-size: 1rem;
-}
 
-.search-form button,
 .task-form button {
   padding: 0 22px;
   border-radius: 14px;
   font-weight: 600;
 }
 
-.search-form button:hover,
 .task-form button:hover,
 .icon-button:hover,
 .text-button:hover {
@@ -217,14 +193,7 @@ footer {
   background: var(--accent-soft);
 }
 
-.quick-actions {
-  margin-top: 22px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-}
 
-.quick-actions a,
 .status-badge,
 .text-link {
   border: 1px solid var(--border);
@@ -236,15 +205,6 @@ footer {
   text-decoration: none;
 }
 
-.quick-actions a { padding: 9px 13px; }
-.quick-actions a:hover { color: var(--text); border-color: var(--accent); }
-
-.dashboard-grid {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
 
 .link-card { padding: 24px; }
 
@@ -981,28 +941,26 @@ footer {
   font-size: 0.72rem;
 }
 
-.quote-field {
-  display: inline-block;
-
-  margin-top: 8px;
-  padding: 4px 10px;
-
-  border: 1px solid rgba(103, 213, 255, 0.35);
-  border-radius: 999px;
-
-  background: rgba(103, 213, 255, 0.08);
-
-  color: var(--accent);
-
-  font-size: 0.72rem;
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 
 /* Dashboard without hero */
 .main-column > .dashboard-grid {
   margin-top: 0;
+}
+
+/* Quote discipline badge */
+
+.quote-field {
+  width: fit-content;
+  max-width: 100%;
+  margin: 8px 0 0;
+  padding: 5px 10px;
+  border: 1px solid rgba(103, 213, 255, 0.35);
+  border-radius: 999px;
+  color: var(--accent);
+  background: rgba(103, 213, 255, 0.08);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }

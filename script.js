@@ -64,8 +64,8 @@ const quickNote = document.querySelector("#quickNote");
 
 const quoteText = document.querySelector("#quoteText");
 const quoteAuthor = document.querySelector("#quoteAuthor");
-const newQuoteButton = document.querySelector("#newQuoteButton");
 const quoteField = document.querySelector("#quoteField");
+const newQuoteButton = document.querySelector("#newQuoteButton");
 
 const modalBackdrop = document.querySelector("#modalBackdrop");
 const linkModal = document.querySelector("#linkModal");
@@ -531,411 +531,518 @@ deleteProjectButton.addEventListener("click", () => {
 
 const motivationalQuotes = [
   {
-    quote: "Build the simplest version that can teach you something.",
-    author: "AETHER"
+    quote: "If I have seen further it is by standing on the shoulders of giants.",
+    author: "Isaac Newton",
+    field: "Mathematics and Physics"
   },
   {
-    quote: "A difficult problem becomes smaller when you define it precisely.",
-    author: "AETHER"
+    quote: "Truth is ever to be found in simplicity.",
+    author: "Isaac Newton",
+    field: "Mathematics and Physics"
   },
   {
-    quote: "Progress is usually a sequence of corrected assumptions.",
-    author: "AETHER"
+    quote: "What we know is a drop; what we do not know is an ocean.",
+    author: "Isaac Newton",
+    field: "Mathematics and Physics"
   },
   {
-    quote: "Design first for clarity, then for performance.",
-    author: "AETHER"
+    quote: "Nature is pleased with simplicity.",
+    author: "Isaac Newton",
+    field: "Mathematics and Physics"
   },
   {
-    quote: "A failed model is still useful if it reveals the wrong assumption.",
-    author: "AETHER"
+    quote: "Nothing is too wonderful to be true, if it be consistent with the laws of nature.",
+    author: "Michael Faraday",
+    field: "Physics and Engineering"
   },
   {
-    quote: "The best engineering questions are specific enough to test.",
-    author: "AETHER"
+    quote: "Work. Finish. Publish.",
+    author: "Michael Faraday",
+    field: "Physics and Engineering"
   },
   {
-    quote: "Work until the mechanism is understood, not merely reproduced.",
-    author: "AETHER"
+    quote: "The important thing is to know how to take all things quietly.",
+    author: "Michael Faraday",
+    field: "Physics and Engineering"
   },
   {
-    quote: "Complex systems are solved one interface at a time.",
-    author: "AETHER"
+    quote: "I was almost frightened at the thought of all the knowledge I wished to acquire.",
+    author: "Michael Faraday",
+    field: "Physics and Engineering"
   },
   {
-    quote: "A good diagram can remove an hour of confusion.",
-    author: "AETHER"
+    quote: "Thoroughly conscious ignorance is the prelude to every real advance in science.",
+    author: "James Clerk Maxwell",
+    field: "Physics"
   },
   {
-    quote: "Precision begins with naming things correctly.",
-    author: "AETHER"
+    quote: "The true logic of this world is in the calculus of probabilities.",
+    author: "James Clerk Maxwell",
+    field: "Physics"
   },
   {
-    quote: "Every simulation is an argument built from assumptions.",
-    author: "AETHER"
+    quote: "There is nothing more practical than a good theory.",
+    author: "James Clerk Maxwell",
+    field: "Physics"
   },
   {
-    quote: "Reliable results require both calculation and scepticism.",
-    author: "AETHER"
+    quote: "The only source of knowledge is experience.",
+    author: "Albert Einstein",
+    field: "Physics"
   },
   {
-    quote: "The fastest route forward is often a better abstraction.",
-    author: "AETHER"
+    quote: "The important thing is not to stop questioning.",
+    author: "Albert Einstein",
+    field: "Physics"
   },
   {
-    quote: "Measure twice, model once, validate always.",
-    author: "AETHER"
+    quote: "Imagination is more important than knowledge.",
+    author: "Albert Einstein",
+    field: "Physics"
   },
   {
-    quote: "A clean equation is not automatically a correct model.",
-    author: "AETHER"
+    quote: "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+    author: "Albert Einstein",
+    field: "Physics"
   },
   {
-    quote: "Understanding grows when you compare methods, not just answers.",
-    author: "AETHER"
+    quote: "A person who never made a mistake never tried anything new.",
+    author: "Albert Einstein",
+    field: "Physics"
   },
   {
-    quote: "The quality of a result depends on the quality of the question.",
-    author: "AETHER"
+    quote: "Everything should be made as simple as possible, but not simpler.",
+    author: "Albert Einstein",
+    field: "Physics"
   },
   {
-    quote: "Build tools that make difficult thinking easier.",
-    author: "AETHER"
+    quote: "I have no special talent. I am only passionately curious.",
+    author: "Albert Einstein",
+    field: "Physics"
   },
   {
-    quote: "An engineer improves reality by first representing it honestly.",
-    author: "AETHER"
+    quote: "Science without religion is lame, religion without science is blind.",
+    author: "Albert Einstein",
+    field: "Physics"
   },
   {
-    quote: "Small improvements compound into technical mastery.",
-    author: "AETHER"
+    quote: "The first principle is that you must not fool yourself.",
+    author: "Richard Feynman",
+    field: "Physics"
   },
   {
-    quote: "When the result is surprising, inspect the assumptions before celebrating.",
-    author: "AETHER"
+    quote: "What I cannot create, I do not understand.",
+    author: "Richard Feynman",
+    field: "Physics"
   },
   {
-    quote: "Good code makes the mathematics visible.",
-    author: "AETHER"
+    quote: "Study hard what interests you the most.",
+    author: "Richard Feynman",
+    field: "Physics"
   },
   {
-    quote: "A model should be as detailed as necessary and no more.",
-    author: "AETHER"
+    quote: "Nature uses only the longest threads to weave her patterns.",
+    author: "Richard Feynman",
+    field: "Physics"
   },
   {
-    quote: "The first prototype answers questions the plan cannot.",
-    author: "AETHER"
+    quote: "I would rather have questions that cannot be answered than answers that cannot be questioned.",
+    author: "Richard Feynman",
+    field: "Physics"
   },
   {
-    quote: "Difficulty is often a signal that the problem needs decomposition.",
-    author: "AETHER"
+    quote: "If you thought that science was certain, that is just an error on your part.",
+    author: "Richard Feynman",
+    field: "Physics"
   },
   {
-    quote: "A strong solution explains why alternatives were rejected.",
-    author: "AETHER"
+    quote: "Science is the belief in the ignorance of experts.",
+    author: "Richard Feynman",
+    field: "Physics"
   },
   {
-    quote: "Accuracy without interpretation is incomplete.",
-    author: "AETHER"
+    quote: "An expert is a person who has made all the mistakes possible in a narrow field.",
+    author: "Niels Bohr",
+    field: "Physics"
   },
   {
-    quote: "Every constraint can become a design decision.",
-    author: "AETHER"
+    quote: "Prediction is very difficult, especially about the future.",
+    author: "Niels Bohr",
+    field: "Physics"
   },
   {
-    quote: "The best projects produce both an artefact and a better thinker.",
-    author: "AETHER"
+    quote: "Your theory is crazy, but it is not crazy enough to be true.",
+    author: "Niels Bohr",
+    field: "Physics"
   },
   {
-    quote: "What you cannot explain clearly, you do not yet control.",
-    author: "AETHER"
+    quote: "Anyone who is not shocked by quantum theory has not understood it.",
+    author: "Niels Bohr",
+    field: "Physics"
   },
   {
-    quote: "Numerical stability is part of correctness.",
-    author: "AETHER"
+    quote: "A new scientific truth does not triumph by convincing its opponents.",
+    author: "Max Planck",
+    field: "Physics"
   },
   {
-    quote: "A result is trustworthy only when you know how it could fail.",
-    author: "AETHER"
+    quote: "An experiment is a question which science poses to nature.",
+    author: "Max Planck",
+    field: "Physics"
   },
   {
-    quote: "Research starts where confident answers end.",
-    author: "AETHER"
+    quote: "Science cannot solve the ultimate mystery of nature.",
+    author: "Max Planck",
+    field: "Physics"
   },
   {
-    quote: "The purpose of mathematics is not decoration but structure.",
-    author: "AETHER"
+    quote: "What we observe is not nature itself, but nature exposed to our method of questioning.",
+    author: "Werner Heisenberg",
+    field: "Physics"
   },
   {
-    quote: "Good engineering balances performance, cost, safety and simplicity.",
-    author: "AETHER"
+    quote: "Not only is the universe stranger than we think, it is stranger than we can think.",
+    author: "Werner Heisenberg",
+    field: "Physics"
   },
   {
-    quote: "Do not optimise a process you have not understood.",
-    author: "AETHER"
+    quote: "The more precisely position is determined, the less precisely momentum is known.",
+    author: "Werner Heisenberg",
+    field: "Physics"
   },
   {
-    quote: "A careful approximation is better than false precision.",
-    author: "AETHER"
+    quote: "Nothing in life is to be feared; it is only to be understood.",
+    author: "Marie Curie",
+    field: "Physics and Chemistry"
   },
   {
-    quote: "The most valuable question is often: what changes the result most?",
-    author: "AETHER"
+    quote: "Be less curious about people and more curious about ideas.",
+    author: "Marie Curie",
+    field: "Physics and Chemistry"
   },
   {
-    quote: "Test the boundary cases; they expose weak reasoning.",
-    author: "AETHER"
+    quote: "One never notices what has been done; one can only see what remains to be done.",
+    author: "Marie Curie",
+    field: "Physics and Chemistry"
   },
   {
-    quote: "A robust system behaves sensibly even when inputs do not.",
-    author: "AETHER"
+    quote: "I was taught that the way of progress was neither swift nor easy.",
+    author: "Marie Curie",
+    field: "Physics and Chemistry"
   },
   {
-    quote: "The model is not reality, but it should respect reality.",
-    author: "AETHER"
+    quote: "In science, we must be interested in things, not in persons.",
+    author: "Marie Curie",
+    field: "Physics and Chemistry"
   },
   {
-    quote: "Iteration is not repetition when each cycle uses evidence.",
-    author: "AETHER"
+    quote: "Somewhere, something incredible is waiting to be known.",
+    author: "Carl Sagan",
+    field: "Astronomy"
   },
   {
-    quote: "Technical confidence should grow from verification, not familiarity.",
-    author: "AETHER"
+    quote: "Science is a way of thinking much more than it is a body of knowledge.",
+    author: "Carl Sagan",
+    field: "Astronomy"
   },
   {
-    quote: "A concise solution is usually the result of deep work.",
-    author: "AETHER"
+    quote: "Extraordinary claims require extraordinary evidence.",
+    author: "Carl Sagan",
+    field: "Astronomy"
   },
   {
-    quote: "The first calculation estimates; the second checks.",
-    author: "AETHER"
+    quote: "We are made of star-stuff.",
+    author: "Carl Sagan",
+    field: "Astronomy"
   },
   {
-    quote: "A project becomes serious when its decisions are documented.",
-    author: "AETHER"
+    quote: "The universe is under no obligation to make sense to you.",
+    author: "Neil deGrasse Tyson",
+    field: "Astrophysics"
   },
   {
-    quote: "You improve faster when you study your errors systematically.",
-    author: "AETHER"
+    quote: "The good thing about science is that it is true whether or not you believe in it.",
+    author: "Neil deGrasse Tyson",
+    field: "Astrophysics"
   },
   {
-    quote: "The computer executes instructions, not intentions.",
-    author: "AETHER"
+    quote: "Equipped with his five senses, man explores the universe around him.",
+    author: "Edwin Hubble",
+    field: "Astronomy"
   },
   {
-    quote: "A graph can reveal what a table hides.",
-    author: "AETHER"
+    quote: "The history of astronomy is a history of receding horizons.",
+    author: "Edwin Hubble",
+    field: "Astronomy"
   },
   {
-    quote: "A clear limitation strengthens rather than weakens an analysis.",
-    author: "AETHER"
+    quote: "The nitrogen in our DNA was made in the interiors of collapsing stars.",
+    author: "Carl Sagan",
+    field: "Astronomy"
   },
   {
-    quote: "Engineering judgement begins where formulas stop deciding.",
-    author: "AETHER"
+    quote: "Research is what I am doing when I do not know what I am doing.",
+    author: "Wernher von Braun",
+    field: "Aerospace Engineering"
   },
   {
-    quote: "Make the hidden assumptions explicit.",
-    author: "AETHER"
+    quote: "Basic research is what I am doing when I do not know what I am doing.",
+    author: "Wernher von Braun",
+    field: "Aerospace Engineering"
   },
   {
-    quote: "A simulation is useful when it changes a decision.",
-    author: "AETHER"
+    quote: "Our two greatest problems are gravity and paper-work.",
+    author: "Wernher von Braun",
+    field: "Aerospace Engineering"
   },
   {
-    quote: "Strong foundations make advanced ideas feel natural.",
-    author: "AETHER"
+    quote: "Scientists discover the world that exists; engineers create the world that never was.",
+    author: "Theodore von Kármán",
+    field: "Engineering"
   },
   {
-    quote: "The best workflow removes friction from repeated tasks.",
-    author: "AETHER"
+    quote: "The scientist describes what is; the engineer creates what never was.",
+    author: "Theodore von Kármán",
+    field: "Engineering"
   },
   {
-    quote: "If a method cannot be validated, its output should be treated cautiously.",
-    author: "AETHER"
+    quote: "Aerodynamics is for people who cannot build engines.",
+    author: "Enzo Ferrari",
+    field: "Automotive Engineering"
   },
   {
-    quote: "A mechanism understood from first principles is easier to improve.",
-    author: "AETHER"
+    quote: "To invent, you need a good imagination and a pile of junk.",
+    author: "Thomas Edison",
+    field: "Engineering"
   },
   {
-    quote: "The shortest code is not always the clearest code.",
-    author: "AETHER"
+    quote: "Genius is one percent inspiration and ninety-nine percent perspiration.",
+    author: "Thomas Edison",
+    field: "Engineering"
   },
   {
-    quote: "Build for the problem you have, not the complexity you imagine.",
-    author: "AETHER"
+    quote: "I have not failed. I have just found ten thousand ways that will not work.",
+    author: "Thomas Edison",
+    field: "Engineering"
   },
   {
-    quote: "Every useful model leaves something out deliberately.",
-    author: "AETHER"
+    quote: "There is a way to do it better—find it.",
+    author: "Thomas Edison",
+    field: "Engineering"
   },
   {
-    quote: "A precise definition can solve half the problem.",
-    author: "AETHER"
+    quote: "The present is theirs; the future, for which I really worked, is mine.",
+    author: "Nikola Tesla",
+    field: "Electrical Engineering"
   },
   {
-    quote: "Curiosity becomes expertise through disciplined follow-through.",
-    author: "AETHER"
+    quote: "The progressive development of man is vitally dependent on invention.",
+    author: "Nikola Tesla",
+    field: "Electrical Engineering"
   },
   {
-    quote: "The difference between a guess and an estimate is the reasoning.",
-    author: "AETHER"
+    quote: "Our virtues and our failings are inseparable, like force and matter.",
+    author: "Nikola Tesla",
+    field: "Electrical Engineering"
   },
   {
-    quote: "Good design makes correct use easier than incorrect use.",
-    author: "AETHER"
+    quote: "The engineer has been, and is, a maker of history.",
+    author: "James Kip Finch",
+    field: "Engineering"
   },
   {
-    quote: "The most impressive project is one you can explain completely.",
-    author: "AETHER"
+    quote: "Engineering is the art of directing the great sources of power in nature.",
+    author: "Thomas Tredgold",
+    field: "Engineering"
   },
   {
-    quote: "When two methods disagree, investigate before averaging.",
-    author: "AETHER"
+    quote: "One machine can do the work of fifty ordinary men.",
+    author: "Elbert Hubbard",
+    field: "Industry"
   },
   {
-    quote: "Real progress often looks like fewer unexplained details.",
-    author: "AETHER"
+    quote: "The best way to predict the future is to invent it.",
+    author: "Alan Kay",
+    field: "Computer Science"
   },
   {
-    quote: "A solver is only as good as its convergence criteria.",
-    author: "AETHER"
+    quote: "A change in perspective is worth eighty IQ points.",
+    author: "Alan Kay",
+    field: "Computer Science"
   },
   {
-    quote: "Visualisation should reveal structure, not merely decorate output.",
-    author: "AETHER"
+    quote: "Simple things should be simple, complex things should be possible.",
+    author: "Alan Kay",
+    field: "Computer Science"
   },
   {
-    quote: "A strong engineer asks what evidence would change the conclusion.",
-    author: "AETHER"
+    quote: "The purpose of computing is insight, not numbers.",
+    author: "Richard Hamming",
+    field: "Computer Science"
   },
   {
-    quote: "Documentation preserves the reasoning behind the result.",
-    author: "AETHER"
+    quote: "The purpose of computing is insight, not pictures.",
+    author: "Richard Hamming",
+    field: "Computer Science"
   },
   {
-    quote: "The best time to simplify is before complexity becomes permanent.",
-    author: "AETHER"
+    quote: "Machines should work; people should think.",
+    author: "Richard Hamming",
+    field: "Computer Science"
   },
   {
-    quote: "A physical test and a simulation answer different parts of the same question.",
-    author: "AETHER"
+    quote: "The bearing of a child takes nine months, no matter how many women are assigned.",
+    author: "Frederick Brooks",
+    field: "Software Engineering"
   },
   {
-    quote: "The purpose of validation is not to prove perfection but to quantify trust.",
-    author: "AETHER"
+    quote: "Adding manpower to a late software project makes it later.",
+    author: "Frederick Brooks",
+    field: "Software Engineering"
   },
   {
-    quote: "Good assumptions are visible, justified and revisable.",
-    author: "AETHER"
+    quote: "The cheapest, fastest, and most reliable components are those that are not there.",
+    author: "Gordon Bell",
+    field: "Computer Engineering"
   },
   {
-    quote: "A project grows when its interfaces are designed carefully.",
-    author: "AETHER"
+    quote: "Simplicity is prerequisite for reliability.",
+    author: "Edsger Dijkstra",
+    field: "Computer Science"
   },
   {
-    quote: "The deeper the theory, the more useful the approximation becomes.",
-    author: "AETHER"
+    quote: "Testing shows the presence, not the absence, of bugs.",
+    author: "Edsger Dijkstra",
+    field: "Computer Science"
   },
   {
-    quote: "A correct answer reached accidentally is not yet understanding.",
-    author: "AETHER"
+    quote: "Computer science is no more about computers than astronomy is about telescopes.",
+    author: "Edsger Dijkstra",
+    field: "Computer Science"
   },
   {
-    quote: "Make each revision remove a specific weakness.",
-    author: "AETHER"
+    quote: "If debugging is removing bugs, programming must be putting them in.",
+    author: "Edsger Dijkstra",
+    field: "Computer Science"
   },
   {
-    quote: "A reliable system fails clearly rather than silently.",
-    author: "AETHER"
+    quote: "The question of whether machines can think is about as relevant as whether submarines can swim.",
+    author: "Edsger Dijkstra",
+    field: "Computer Science"
   },
   {
-    quote: "There is no substitute for checking units.",
-    author: "AETHER"
+    quote: "Programs must be written for people to read.",
+    author: "Harold Abelson",
+    field: "Computer Science"
   },
   {
-    quote: "The most useful models are understandable enough to challenge.",
-    author: "AETHER"
+    quote: "Premature optimisation is the root of all evil.",
+    author: "Donald Knuth",
+    field: "Computer Science"
   },
   {
-    quote: "An elegant solution usually exposes the governing structure.",
-    author: "AETHER"
+    quote: "Science is what we understand well enough to explain to a computer.",
+    author: "Donald Knuth",
+    field: "Computer Science"
   },
   {
-    quote: "Do not confuse computational expense with physical accuracy.",
-    author: "AETHER"
+    quote: "Beware of bugs in the above code; I have only proved it correct.",
+    author: "Donald Knuth",
+    field: "Computer Science"
   },
   {
-    quote: "A difficult derivation is easier when each step has a purpose.",
-    author: "AETHER"
+    quote: "The limits of my language mean the limits of my world.",
+    author: "Ludwig Wittgenstein",
+    field: "Philosophy and Logic"
   },
   {
-    quote: "You do not need every tool; you need the right tool used well.",
-    author: "AETHER"
+    quote: "We can only see a short distance ahead, but we can see plenty that needs to be done.",
+    author: "Alan Turing",
+    field: "Computer Science"
   },
   {
-    quote: "The best experiments isolate the variable that matters.",
-    author: "AETHER"
+    quote: "Sometimes it is the people no one imagines anything of who do the things no one can imagine.",
+    author: "Alan Turing",
+    field: "Computer Science"
   },
   {
-    quote: "Learning accelerates when theory is connected to something you build.",
-    author: "AETHER"
+    quote: "Those who can imagine anything can create the impossible.",
+    author: "Alan Turing",
+    field: "Computer Science"
   },
   {
-    quote: "A good project question creates a path for evaluation.",
-    author: "AETHER"
+    quote: "The most dangerous phrase in the language is: We have always done it this way.",
+    author: "Grace Hopper",
+    field: "Computer Science"
   },
   {
-    quote: "When performance matters, measure before optimising.",
-    author: "AETHER"
+    quote: "A ship in port is safe, but that is not what ships are built for.",
+    author: "Grace Hopper",
+    field: "Computer Science"
   },
   {
-    quote: "A system is understandable when its components and interactions are explicit.",
-    author: "AETHER"
+    quote: "It is easier to ask forgiveness than it is to get permission.",
+    author: "Grace Hopper",
+    field: "Computer Science"
   },
   {
-    quote: "Strong technical work includes uncertainty, not just conclusions.",
-    author: "AETHER"
+    quote: "One accurate measurement is worth a thousand expert opinions.",
+    author: "Grace Hopper",
+    field: "Computer Science"
   },
   {
-    quote: "The most valuable revision is the one that improves the reasoning.",
-    author: "AETHER"
+    quote: "The human mind has first to construct forms, independently, before we can find them in things.",
+    author: "Albert Einstein",
+    field: "Mathematics and Physics"
   },
   {
-    quote: "A practical solution can still be mathematically rigorous.",
-    author: "AETHER"
+    quote: "Mathematics is the queen of the sciences.",
+    author: "Carl Friedrich Gauss",
+    field: "Mathematics"
   },
   {
-    quote: "Breakthroughs often begin as better representations of old problems.",
-    author: "AETHER"
+    quote: "Mathematics is the music of reason.",
+    author: "James Joseph Sylvester",
+    field: "Mathematics"
   },
   {
-    quote: "The goal is not to remove every error but to understand and control it.",
-    author: "AETHER"
+    quote: "Pure mathematics is, in its way, the poetry of logical ideas.",
+    author: "Albert Einstein",
+    field: "Mathematics"
   },
   {
-    quote: "A reliable estimate should survive a change in method.",
-    author: "AETHER"
+    quote: "The essence of mathematics lies in its freedom.",
+    author: "Georg Cantor",
+    field: "Mathematics"
   },
   {
-    quote: "Build knowledge in layers: principle, model, implementation, validation.",
-    author: "AETHER"
+    quote: "In mathematics, the art of proposing a question must be held of higher value than solving it.",
+    author: "Georg Cantor",
+    field: "Mathematics"
   },
   {
-    quote: "The best engineering habit is to ask what would make the result wrong.",
-    author: "AETHER"
+    quote: "God made the integers; all else is the work of man.",
+    author: "Leopold Kronecker",
+    field: "Mathematics"
   },
   {
-    quote: "Finish the version that works, then improve the version that matters.",
-    author: "AETHER"
+    quote: "Mathematics knows no races or geographic boundaries.",
+    author: "David Hilbert",
+    field: "Mathematics"
   }
 ];
 
 let previousQuoteIndex = -1;
 
 function showRandomQuote() {
-  if (!quoteText || !quoteAuthor || motivationalQuotes.length === 0) return;
+  if (
+    !quoteText ||
+    !quoteAuthor ||
+    !quoteField ||
+    motivationalQuotes.length === 0
+  ) {
+    return;
+  }
 
   let index;
 
@@ -951,10 +1058,7 @@ function showRandomQuote() {
   const selectedQuote = motivationalQuotes[index];
   quoteText.textContent = selectedQuote.quote;
   quoteAuthor.textContent = `— ${selectedQuote.author}`;
-
-  if (quoteField) {
-      quoteField.textContent = selectedQuote.field;
-  }
+  quoteField.textContent = selectedQuote.field;
 }
 
 themeToggle.addEventListener("click", () => {
