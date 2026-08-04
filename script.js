@@ -653,39 +653,6 @@ function showFallbackQuote() {
   quoteAuthor.textContent = `— ${quote.author}`;
 }
 
-async function showOnlineQuote() {
-  if (!quoteText || !quoteAuthor || !newQuoteButton) return;
-
-  quoteText.textContent = "Loading a new quote…";
-  quoteAuthor.textContent = "";
-  newQuoteButton.disabled = true;
-
-  try {
-    const response = await fetch(
-      `https://dummyjson.com/quotes/random?timestamp=${Date.now()}`,
-      { cache: "no-store" }
-    );
-
-    if (!response.ok) {
-      throw new Error(`Quote request failed with status ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    if (!data.quote || !data.author) {
-      throw new Error("The quote service returned incomplete data.");
-    }
-
-    quoteText.textContent = data.quote;
-    quoteAuthor.textContent = `— ${data.author}`;
-  } catch (error) {
-    console.error("Could not load an online quote:", error);
-    showFallbackQuote();
-  } finally {
-    newQuoteButton.disabled = false;
-  }
-}
-
 themeToggle.addEventListener("click", () => {
   setTheme(document.body.classList.contains("light") ? "dark" : "light");
 });
@@ -713,9 +680,9 @@ quickNote.addEventListener("input", () => {
 });
 
 if (newQuoteButton) {
-  newQuoteButton.addEventListener("click", showOnlineQuote);
+  newQuoteButton.addEventListener("click", showFallbackQuote);
 }
-showOnlineQuote();
+showFallbackQuote();
 
 initialiseTheme();
 updateClock();
