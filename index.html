@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Devid's personal STEM dashboard">
+  <title>Devid Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-grid" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">PERSONAL WORKSPACE</p>
+      <h1>Devid Dashboard</h1>
+    </div>
+
+    <div class="topbar-actions">
+      <div class="clock" aria-label="Current date and time">
+        <strong id="clock">--:--</strong>
+        <span id="date">Loading date…</span>
+      </div>
+      <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle colour theme">◐</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero panel">
+      <div>
+        <p class="eyebrow">QUICK SEARCH</p>
+        <h2>What are you working on?</h2>
+        <p class="muted">Search Google or open one of your main workspaces.</p>
+      </div>
+
+      <form class="search-form" action="https://www.google.com/search" method="get">
+        <label class="sr-only" for="search">Search Google</label>
+        <input id="search" name="q" type="search" placeholder="Search Google…" autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="quick-actions">
+        <a href="https://drive.google.com/" target="_blank" rel="noopener">Drive</a>
+        <a href="https://calendar.google.com/" target="_blank" rel="noopener">Calendar</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://cad.onshape.com/" target="_blank" rel="noopener">Onshape</a>
+        <a href="https://www.simscale.com/" target="_blank" rel="noopener">SimScale</a>
+      </div>
+    </section>
+
+    <section class="dashboard-grid" aria-label="Dashboard links">
+      <article class="link-card">
+        <div class="card-heading">
+          <span class="card-icon">01</span>
+          <div>
+            <p class="eyebrow">LEARN</p>
+            <h2>Courses & study</h2>
+          </div>
+        </div>
+        <div class="link-list">
+          <a href="https://ocw.mit.edu/" target="_blank" rel="noopener"><span>MIT OpenCourseWare</span><small>University-level material</small></a>
+          <a href="https://isaacphysics.org/" target="_blank" rel="noopener"><span>Isaac Physics</span><small>Physics problem solving</small></a>
+          <a href="https://www.khanacademy.org/" target="_blank" rel="noopener"><span>Khan Academy</span><small>Core explanations</small></a>
+          <a href="https://www.coursera.org/" target="_blank" rel="noopener"><span>Coursera</span><small>Structured courses</small></a>
+          <a href="https://www.edx.org/" target="_blank" rel="noopener"><span>edX</span><small>University courses</small></a>
+        </div>
+      </article>
+
+      <article class="link-card">
+        <div class="card-heading">
+          <span class="card-icon">02</span>
+          <div>
+            <p class="eyebrow">BUILD</p>
+            <h2>CAD & design</h2>
+          </div>
+        </div>
+        <div class="link-list">
+          <a href="https://cad.onshape.com/" target="_blank" rel="noopener"><span>Onshape</span><small>Browser CAD</small></a>
+          <a href="https://www.autodesk.com/products/fusion-360/personal" target="_blank" rel="noopener"><span>Autodesk Fusion</span><small>CAD, CAM and simulation</small></a>
+          <a href="https://grabcad.com/library" target="_blank" rel="noopener"><span>GrabCAD Library</span><small>Reference models</small></a>
+          <a href="https://www.mcmaster.com/" target="_blank" rel="noopener"><span>McMaster-Carr</span><small>Standard components</small></a>
+          <a href="https://www.traceparts.com/" target="_blank" rel="noopener"><span>TraceParts</span><small>Supplier CAD models</small></a>
+        </div>
+      </article>
+
+      <article class="link-card">
+        <div class="card-heading">
+          <span class="card-icon">03</span>
+          <div>
+            <p class="eyebrow">ANALYSE</p>
+            <h2>CFD & simulation</h2>
+          </div>
+        </div>
+        <div class="link-list">
+          <a href="https://www.simscale.com/" target="_blank" rel="noopener"><span>SimScale</span><small>Cloud CFD and FEA</small></a>
+          <a href="https://www.openfoam.com/" target="_blank" rel="noopener"><span>OpenFOAM</span><small>Open-source CFD</small></a>
+          <a href="https://www.paraview.org/" target="_blank" rel="noopener"><span>ParaView</span><small>Scientific visualisation</small></a>
+          <a href="https://su2code.github.io/" target="_blank" rel="noopener"><span>SU2</span><small>Open-source multiphysics</small></a>
+          <a href="https://www.cfd-online.com/" target="_blank" rel="noopener"><span>CFD Online</span><small>Community and reference</small></a>
+        </div>
+      </article>
+
+      <article class="link-card">
+        <div class="card-heading">
+          <span class="card-icon">04</span>
+          <div>
+            <p class="eyebrow">DEVELOP</p>
+            <h2>Code & computing</h2>
+          </div>
+        </div>
+        <div class="link-list">
+          <a href="https://github.com/" target="_blank" rel="noopener"><span>GitHub</span><small>Repositories and portfolio</small></a>
+          <a href="https://vscode.dev/" target="_blank" rel="noopener"><span>VS Code Web</span><small>Browser editor</small></a>
+          <a href="https://docs.python.org/3/" target="_blank" rel="noopener"><span>Python Documentation</span><small>Language reference</small></a>
+          <a href="https://numpy.org/doc/" target="_blank" rel="noopener"><span>NumPy Documentation</span><small>Numerical arrays</small></a>
+          <a href="https://docs.scipy.org/doc/scipy/" target="_blank" rel="noopener"><span>SciPy Documentation</span><small>Scientific computing</small></a>
+        </div>
+      </article>
+
+      <article class="link-card">
+        <div class="card-heading">
+          <span class="card-icon">05</span>
+          <div>
+            <p class="eyebrow">RESEARCH</p>
+            <h2>Papers & literature</h2>
+          </div>
+        </div>
+        <div class="link-list">
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener"><span>Google Scholar</span><small>Academic search</small></a>
+          <a href="https://arxiv.org/" target="_blank" rel="noopener"><span>arXiv</span><small>Research preprints</small></a>
+          <a href="https://www.semanticscholar.org/" target="_blank" rel="noopener"><span>Semantic Scholar</span><small>Paper discovery</small></a>
+          <a href="https://ntrs.nasa.gov/" target="_blank" rel="noopener"><span>NASA Technical Reports</span><small>Aerospace research</small></a>
+          <a href="https://www.sciencedirect.com/" target="_blank" rel="noopener"><span>ScienceDirect</span><small>Journal articles</small></a>
+        </div>
+      </article>
+
+      <article class="link-card">
+        <div class="card-heading">
+          <span class="card-icon">06</span>
+          <div>
+            <p class="eyebrow">TOOLS</p>
+            <h2>Daily utilities</h2>
+          </div>
+        </div>
+        <div class="link-list">
+          <a href="https://drive.google.com/" target="_blank" rel="noopener"><span>Google Drive</span><small>Files and archive</small></a>
+          <a href="https://docs.google.com/" target="_blank" rel="noopener"><span>Google Docs</span><small>Writing and reports</small></a>
+          <a href="https://www.overleaf.com/" target="_blank" rel="noopener"><span>Overleaf</span><small>LaTeX documents</small></a>
+          <a href="https://www.wolframalpha.com/" target="_blank" rel="noopener"><span>Wolfram|Alpha</span><small>Symbolic calculation</small></a>
+          <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener"><span>Desmos</span><small>Graphing calculator</small></a>
+        </div>
+      </article>
+    </section>
+
+    <section class="lower-grid">
+      <article class="panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">ACTIVE WORK</p>
+            <h2>Projects</h2>
+          </div>
+          <span class="status-badge">Editable in index.html</span>
+        </div>
+
+        <div class="project-grid">
+          <a class="project" href="https://github.com/" target="_blank" rel="noopener">
+            <span>DynamiX</span>
+            <small>Physics engine NEA</small>
+          </a>
+          <a class="project" href="https://cad.onshape.com/" target="_blank" rel="noopener">
+            <span>CAD Portfolio</span>
+            <small>Mechanical design practice</small>
+          </a>
+          <a class="project" href="https://www.simscale.com/" target="_blank" rel="noopener">
+            <span>CFD Portfolio</span>
+            <small>Airfoils, Ahmed body and more</small>
+          </a>
+          <a class="project" href="https://github.com/" target="_blank" rel="noopener">
+            <span>Numerical Methods</span>
+            <small>Solvers and simulations</small>
+          </a>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">FOCUS</p>
+            <h2>Today</h2>
+          </div>
+          <button id="clearTasks" class="text-button" type="button">Clear completed</button>
+        </div>
+
+        <form id="taskForm" class="task-form">
+          <label class="sr-only" for="taskInput">Add task</label>
+          <input id="taskInput" type="text" maxlength="100" placeholder="Add a task…">
+          <button type="submit">Add</button>
+        </form>
+
+        <ul id="taskList" class="task-list" aria-live="polite"></ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>Devid Dashboard</span>
+    <span>Static, private by design, and hosted with GitHub Pages.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
