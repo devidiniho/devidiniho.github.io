@@ -541,6 +541,106 @@ const fallbackQuotes = [
     quote: "Nothing is too wonderful to be true, if it is consistent with the laws of nature.",
     author: "Michael Faraday"
   }
+  {
+  text: "Study hard what interests you the most in the most undisciplined, irreverent and original manner possible.",
+  author: "Richard Feynman"
+  },
+  {
+    text: "The scientist is not a person who gives the right answers; he's one who asks the right questions.",
+    author: "Claude Lévi-Strauss"
+  },
+  {
+    text: "The first principle is that you must not fool yourself—and you are the easiest person to fool.",
+    author: "Richard Feynman"
+  },
+  {
+    text: "Everything should be made as simple as possible, but not simpler.",
+    author: "Albert Einstein"
+  },
+  {
+    text: "If I have seen further it is by standing on the shoulders of giants.",
+    author: "Isaac Newton"
+  },
+  {
+    text: "Research is what I'm doing when I don't know what I'm doing.",
+    author: "Wernher von Braun"
+  },
+  {
+    text: "Science is a way of thinking much more than it is a body of knowledge.",
+    author: "Carl Sagan"
+  },
+  {
+    text: "Somewhere, something incredible is waiting to be known.",
+    author: "Carl Sagan"
+  },
+  {
+    text: "The great tragedy of science—the slaying of a beautiful hypothesis by an ugly fact.",
+    author: "Thomas Huxley"
+  },
+  {
+    text: "Nature uses only the longest threads to weave her patterns.",
+    author: "Richard Feynman"
+  },
+  {
+    text: "Every once in a while, a new technology, an old problem, and a big idea turn into an innovation.",
+    author: "Dean Kamen"
+  },
+  {
+    text: "Scientists investigate that which already is; engineers create that which has never been.",
+    author: "Theodore von Kármán"
+  },
+  {
+    text: "Engineering is the art of directing the great sources of power in nature for the use and convenience of mankind.",
+    author: "Thomas Tredgold"
+  },
+  {
+    text: "The engineer has been, and is, a maker of history.",
+    author: "James Kip Finch"
+  },
+  {
+    text: "No problem can withstand the assault of sustained thinking.",
+    author: "Voltaire"
+  },
+  {
+    text: "We are still pioneers.",
+    author: "James Webb"
+  },
+  {
+    text: "Failure is simply the opportunity to begin again, this time more intelligently.",
+    author: "Henry Ford"
+  },
+  {
+    text: "Vision without execution is hallucination.",
+    author: "Thomas Edison"
+  },
+  {
+    text: "The best way to predict the future is to invent it.",
+    author: "Alan Kay"
+  },
+  {
+    text: "The limits of my language mean the limits of my world.",
+    author: "Ludwig Wittgenstein"
+  },
+  {
+    text: "The important thing is not to stop questioning.",
+    author: "Albert Einstein"
+  },
+  {
+    text: "What we know is a drop; what we do not know is an ocean.",
+    author: "Isaac Newton"
+  },
+  {
+    text: "Nothing is too wonderful to be true, if it is consistent with the laws of nature.",
+    author: "Michael Faraday"
+  },
+  {
+    text: "An experiment is a question which science poses to nature.",
+    author: "Max Planck"
+  },
+  {
+    text: "The present is theirs; the future, for which I really worked, is mine.",
+    author: "Nikola Tesla"
+  }
 ];
 
 function showFallbackQuote() {
