@@ -549,6 +549,66 @@ quickNote.addEventListener("input", () => {
   localStorage.setItem(storageKeys.quickNote, quickNote.value);
 });
 
+const quoteText = document.querySelector("#quoteText");
+const quoteAuthor = document.querySelector("#quoteAuthor");
+const newQuoteButton = document.querySelector("#newQuoteButton");
+
+const motivationalQuotes = [
+  {
+    text: "What we know is a drop; what we do not know is an ocean.",
+    author: "Isaac Newton"
+  },
+  {
+    text: "Nothing is too wonderful to be true, if it is consistent with the laws of nature.",
+    author: "Michael Faraday"
+  },
+  {
+    text: "The important thing is not to stop questioning.",
+    author: "Albert Einstein"
+  },
+  {
+    text: "Success is the result of preparation, hard work, and learning from failure.",
+    author: "Colin Powell"
+  },
+  {
+    text: "Somewhere, something incredible is waiting to be known.",
+    author: "Carl Sagan"
+  },
+  {
+    text: "An experiment is a question which science poses to nature.",
+    author: "Max Planck"
+  },
+  {
+    text: "The present is theirs; the future, for which I really worked, is mine.",
+    author: "Nikola Tesla"
+  },
+  {
+    text: "There is no great invention without a bold guess.",
+    author: "Isaac Newton"
+  }
+];
+
+function showRandomQuote() {
+  const previousQuote = quoteText.dataset.quoteIndex;
+  let index;
+
+  do {
+    index = Math.floor(Math.random() * motivationalQuotes.length);
+  } while (
+    motivationalQuotes.length > 1 &&
+    String(index) === previousQuote
+  );
+
+  const quote = motivationalQuotes[index];
+
+  quoteText.textContent = quote.text;
+  quoteAuthor.textContent = `— ${quote.author}`;
+  quoteText.dataset.quoteIndex = String(index);
+}
+
+newQuoteButton.addEventListener("click", showRandomQuote);
+showRandomQuote();
+
 initialiseTheme();
 updateClock();
 buildCalendar();
@@ -556,3 +616,4 @@ renderLinks();
 renderProjects();
 renderTasks();
 setInterval(updateClock, 1000);
+
